@@ -1,7 +1,9 @@
 const {createRegister} = require("./../Models/insert/register")
 
-function controllerCreaterRegister(req){
-    return createRegister(req)
+async function controllerCreaterRegister(req, res){
+    req.body.dateNow = new Date(Date.now()).toISOString()
+    let  register =  await createRegister(req)
+    res.json(register)
 }
 
 module.exports = {controllerCreaterRegister}

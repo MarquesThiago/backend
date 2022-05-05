@@ -3,10 +3,11 @@ const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 
 function  findRegisterName(req) {
+    console.log(req.body.name)
     let register  =  cadastro.findAll({
         where: {
             nome: {
-                [Op.Like]: `%${req.body.name}%`
+                [Op.like]: `%${req.body.name}%`
             }
         }
     }).catch(() => {return {}})
@@ -24,7 +25,7 @@ async function  findRegisterDocument(req) {
     let register  =  await cadastro.findAll({
         where: {
             numero_documento: {
-                [Op.Like] : `%${req.body.numero_documento}%`
+                [Op.like] : `%${req.body.document}%`
             }
         }
     }).catch(() => { return {}})

@@ -2,17 +2,21 @@ const { findRegisterId, findRegisterName, findRegisterDocument } = require("../M
 const {findTrainId, findTrainName, findTrainMaterial} = require("../Models/Finders/findsTrain")
 
 
- function controllerFinderRegister(req){
+ async function controllerFinderRegister(req, res){
 
     let typeFind = req.body.controller
-    
+    let register
+
     switch(typeFind){
         case "id":
-            return findRegisterId(req)
+             register =  await findRegisterId(req)
+             res.json(register)
         case "name":
-            return findRegisterName(req)
+            register = await findRegisterName(req)
+            res.json(register)
         case "document":
-            return findRegisterDocument(req)
+            register = await findRegisterDocument(req)
+            res.json(register)
         default:
             return {status: 404, message: "Sorry!, Not Found Elements, Verify Your Requisition And Try Again"}
     }
