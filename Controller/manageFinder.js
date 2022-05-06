@@ -33,6 +33,4 @@ function controllerFinderTrain(req) {
     }
 }
 
-
-
 module.exports = { controllerFinderRegister, controllerFinderTrain }

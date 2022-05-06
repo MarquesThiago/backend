@@ -12,7 +12,7 @@ module.exports = db.define("curso", {
     type: Sequelize.STRING,
     allowNull: false,
   },
- material_alvo: {
+  material_alvo: {
       type: Sequelize.INTEGER,
       allowNull: false
   },

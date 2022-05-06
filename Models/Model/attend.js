@@ -24,4 +24,3 @@ attends.belongsToMany(team)
 attends.belongsToMany(register)
 
 module.exports = attends
- 
