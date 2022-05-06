@@ -2,7 +2,7 @@ const { findRegisterId, findRegisterName, findRegisterDocument } = require("../M
 const { findTrainId, findTrainName, findTrainMaterial } = require("../Models/Finders/findsTrain")
 
 
-async function controllerFinderRegister(req, res){
+async function controllerFinderRegister(req, _res){
 
     const typeFind = req.body.controller
 

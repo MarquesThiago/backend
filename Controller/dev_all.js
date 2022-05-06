@@ -1,6 +1,6 @@
 const register = require("../Models/Model/register")
 
-const allRegister =  (req, res) => {
+const allRegister =  (_req, _res) => {
     register.findAll().then((result) => {
         return result;
     })
