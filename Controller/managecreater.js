@@ -1,7 +1,7 @@
-const {createRegister} = require("./../Models/insert/register")
+const { createRegister } = require("./../Models/insert/register")
 
-function controllerCreaterRegister(req){
+function controllerCreaterRegister(req) {
     return createRegister(req)
 }
 
-module.exports = {controllerCreaterRegister}
+module.exports = { controllerCreaterRegister }

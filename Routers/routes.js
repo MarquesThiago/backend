@@ -1,28 +1,26 @@
-const express = require( 'express')
-const {controllerFinderRegister, controllerFinderTrain} = require("./../Controller/manageFinder")
-const {controllerCreaterRegister} = require("./../Controller/managecreater")
-
+const express = require('express')
+const { controllerFinderRegister, controllerFinderTrain } = require("./../Controller/manageFinder")
+const { controllerCreaterRegister } = require("./../Controller/managecreater")
 
 const routes =  express.Router()
 
 routes.get("/", (req , res) => {
-    return res.json( {status : 500})
+    return res.status(204).send()
 })
 
 routes.post("/find-cad", (req , res) => {
-    let register = controllerFinderRegister(req)
-    res.json(register)
+    const register = controllerFinderRegister(req)
+    res.status(200).send(register)
 })
 
-routes.post("/find-curse", (req , res) => {
-    let register = controllerFinderTrain(req)
-    res.json(register)
+routes.post("/find-course", (req , res) => {
+    const register = controllerFinderTrain(req)
+    res.status(200).send(register)
 })
 
 routes.post("/create-register", (req, res) => {
-    let register = controllerCreaterRegister(req)
-    res.json(register)
+    const register = controllerCreaterRegister(req)
+    res.status(200).send(register)
 })
-
 
 module.exports = routes 

@@ -2,33 +2,28 @@ const curse = require("../Model/train")
 const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 
-function  findTrainName(req) {
-    let train  =  curse.findAll({
+function findTrainName(req) {
+    return  curse.findAll({
         where: {
             nome: {
                 [Op.Like]: `%${req.body.name}%`
             }
         }
     }).catch(() => {return {}})
-    
-    return train
-
 }
 
 async function  findTrainId(req) {
-    let train  =  await curse.findByPk(req.body.id)
-    return train
+    return curse.findByPk(req.body.id)
 }
 
 async function  findTrainMaterial(req) {
-    let train  =  await curse.findAll({
+    return curse.findAll({
         where: {
             material_alvo: {
                 [Op.Like] : `%${req.body.materia}%`
             }
         }
     }).catch(() => { return {}})
-    return train
 }
 
-module.exports =  {findTrainName, findTrainId, findTrainMaterial }
+module.exports =  { findTrainName, findTrainId, findTrainMaterial }

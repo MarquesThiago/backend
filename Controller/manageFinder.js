@@ -1,11 +1,10 @@
 const { findRegisterId, findRegisterName, findRegisterDocument } = require("../Models/Finders/findsRegister")
-const {findTrainId, findTrainName, findTrainMaterial} = require("../Models/Finders/findsTrain")
+const { findTrainId, findTrainName, findTrainMaterial } = require("../Models/Finders/findsTrain")
 
 
- function controllerFinderRegister(req){
+function controllerFinderRegister(req) {
+    const typeFind = req.body.controller
 
-    let typeFind = req.body.controller
-    
     switch(typeFind){
         case "id":
             return findRegisterId(req)
@@ -19,10 +18,9 @@ const {findTrainId, findTrainName, findTrainMaterial} = require("../Models/Finde
 }
 
 
-function controllerFinderTrain(req){
+function controllerFinderTrain(req) {
+    const typeFind = req.body.controller
 
-    let typeFind = req.body.controller
-    
     switch(typeFind){
         case "id":
             return findTrainId(req)
@@ -37,4 +35,4 @@ function controllerFinderTrain(req){
 
 
 
- module.exports = {controllerFinderRegister, controllerFinderTrain}
+module.exports = { controllerFinderRegister, controllerFinderTrain }
