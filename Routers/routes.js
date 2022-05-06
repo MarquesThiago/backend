@@ -5,7 +5,7 @@ const { allRegister } = require("./../Controller/dev_all")
 
 const routes =  express.Router()
 
-routes.get("/", (req , res) => {
+routes.get("/", (_req , res) => {
     return res.status(204).send()
 })
 
