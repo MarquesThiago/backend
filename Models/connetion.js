@@ -1,4 +1,3 @@
-require('dotenv').config()
 const Sequelize =  require('sequelize')
 const Op = Sequelize.Op;
 const operatorsAliases = {
@@ -6,14 +5,12 @@ const operatorsAliases = {
   $not: Op.not
 }
 
-
-const dbLocal = process.env.DB_LOCAL
-const dbLanguage  = process.env.DB_LANGUEGE
+const dbLocal = process.env.DB_LOCAL || './DB/register_green_teens.sqlite3'
+const dbLanguage  = process.env.DB_LANGUAGE || 'sqlite'
 
 const sequelize = new Sequelize({
-    // host: 'localhost',
-    dialect: 'sqlite',
-    storage: './DB/register_green_teens.sqlite3',
+    dialect: dbLanguage,
+    storage: dbLocal,
     operatorsAliases
 })
 
