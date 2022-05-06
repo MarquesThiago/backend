@@ -1,26 +1,26 @@
-const cadastro = require("../Model/cadastro")
+const register = require("../Model/register")
 const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 
 function findRegisterName(req) {
-    return cadastro.findAll({
+    return register.findAll({
         where: {
             nome: {
-                [Op.Like]: `%${req.body.name}%`
+                [Op.like]: `%${req.body.name}%`
             }
         }
     }).catch(() => {return {}})
 }
 
 async function  findRegisterId(req) {
-    return cadastro.findByPk(req.body.id)
+    return register.findByPk(req.body.id)
 }
 
 async function  findRegisterDocument(req) {
-    return cadastro.findAll({
+    return register.findAll({
         where: {
             numero_documento: {
-                [Op.Like] : `%${req.body.numero_documento}%`
+                [Op.like] : `%${req.body.document}%`
             }
         }
     }).catch(() => { return {}})

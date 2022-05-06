@@ -1,11 +1,9 @@
-FROM node:16.13.0-alpine
-
-RUN mkdir /greentechs
-WORKDIR /greentechs
-COPY package*.json ./
+FROM node:16.13.2-slim
+WORKDIR /
+COPY  package*.json ./
 RUN npm install
 
 COPY . .
 
-EXPOSE 8000
-CMD [ "npm", "start" ]
+EXPOSE 3030
+CMD  ['npm" , "start"]

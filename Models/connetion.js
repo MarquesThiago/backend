@@ -11,7 +11,7 @@ const dbLocal = process.env.DB_LOCAL
 const dbLanguage  = process.env.DB_LANGUEGE
 
 const sequelize = new Sequelize({
-    host: 'localhost',
+    // host: 'localhost',
     dialect: 'sqlite',
     storage: './DB/register_green_teens.sqlite3',
     operatorsAliases

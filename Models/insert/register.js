@@ -1,15 +1,18 @@
-const cadastro = require("../Model/cadastro")
+const register = require("../Model/register")
 
-function createRegister(req){
-    return cadastro.create({
-        nome: req.body.name ,
-        numero_documento: req.body.numDocument,
-        data_nascimento: req.body.dataNasc,
-        telefone: req.body.phone,
-        endereço: req.body.address,
-        status: req.body.status,
-        cidade: req.body.city,
-        UF: req.body.state,
+async function createRegister(req){
+    const body = req.body
+
+    return register.create({
+        nome:body.name,
+        numero_documento:body.numDocument,
+        data_nascimento:body.dataNasc,
+        telefone:body.phone,
+        endereço:body.address,
+        status:body.status,
+        cidade:body.city,
+        UF:body.state,
+        created_at:body.dateNow,
     })
 }
 

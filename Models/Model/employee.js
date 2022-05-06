@@ -1,5 +1,5 @@
 const  Sequelize =  require("sequelize")
-const cadastro = require('./cadastro')
+const register = require('./register')
 const db = require("../connetion")
 
 const employee =  db.define( "funcioanrio", {
@@ -31,6 +31,6 @@ const employee =  db.define( "funcioanrio", {
 
 })
 
-employee.hasOne(cadastro)
+employee.hasOne(register)
 
 module.exports =  employee

@@ -1,6 +1,7 @@
 const { createRegister } = require("./../Models/insert/register")
 
-function controllerCreaterRegister(req) {
+async function controllerCreaterRegister(req, res){
+    req.body.dateNow = new Date(Date.now()).toISOString()
     return createRegister(req)
 }
 

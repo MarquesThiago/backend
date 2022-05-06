@@ -1,7 +1,7 @@
 const  Sequelize =  require("sequelize")
 const db = require("../connetion")
 const team = require('./class')
-const register = require('./cadastro')
+const register = require('./register')
 
 const attends = db.define('cursar', {
     id_turma: {
