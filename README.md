@@ -5,7 +5,6 @@
 All routes bellow receive POST method and return status 200 with a JSON
 
 ### /find-cad
-- body params in define
 - required params controller in body
 - variant controller params : "name", "document",'id"
 - exemplo
@@ -21,7 +20,6 @@ All routes bellow receive POST method and return status 200 with a JSON
 }'
 
 ### /find-course
-- body params in define
 - required params controller in body
 - variant controller params : "name", "material",'jours"
 -  curl --request POST \
@@ -34,7 +32,6 @@ All routes bellow receive POST method and return status 200 with a JSON
 }'
 
 ### /create-register
-- body params in define
 -  curl --request POST \
   --url http://localhost/create-register \
   --header 'Content-Type: application/json' \
@@ -104,9 +101,8 @@ All routes bellow receive POST method and return status 200 with a JSON
 }'
 
 ### /find-employee
-- body params in define
 - required params controller in body
-- - variant controller params : "name", "document",'id","depth" and "office"
+   - variant controller params : "name", "document",'id","depth" and "office"
 - exemple;
 - curl --request POST \
   --url http://localhost/find-employee \
@@ -122,7 +118,6 @@ All routes bellow receive POST method and return status 200 with a JSON
 }'
 
 ### /find-classes
-- body params in define
 -  required params controller in body
 - variant controller params : "course", "room",'date"
 - exemplo

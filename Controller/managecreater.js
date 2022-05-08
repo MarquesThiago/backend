@@ -8,16 +8,16 @@ const {createAttends} = require("./../Models/insert/attends")
 
 async function controllerCreaterRegister(req, _res){
     req.body.dateNow = new Date(Date.now()).toISOString()
-    let register = await createRegister(req)
+
+    const register = await createRegister(req)
     register["dataValues"]["AddedClasses"]  = []
 
     for( let index = 0; index < req.body.listClasses.length; index++){
-        let team =  req.body.listClasses[index]
+        const team =  req.body.listClasses[index]
         team["idRegister"] = register.id_cadastro
 
-        let attend = await createAttends(team)
+        const attend = await createAttends(team)
         register["dataValues"]["AddedClasses"].push(attend['dataValues'])
-
     }
 
     return register
@@ -25,17 +25,16 @@ async function controllerCreaterRegister(req, _res){
 }
 
 async function controllerCreaterEmployee(req){
-    let employee = await createEmployee(req.body)
+    const employee = await createEmployee(req.body)
     
     employee["dataValues"]["listClassesCreated"] = [ ]
 
     for( let index = 0; index < req.body.listClasses.length; index++ ){
-            let tutor =  req.body.listClasses[index]
+            const tutor =  req.body.listClasses[index]
             tutor["idEmpployee"] =  employee.id_funcionario
             
             await createTutor(tutor)
             employee["dataValues"]["listClassesCreated"] .push(tutor)
-          
     }
 
     return employee
@@ -51,5 +50,9 @@ async function controllerCreaterClasses(req){
 
 
 
-module.exports = { controllerCreaterRegister , controllerCreaterEmployee,
-     controllerCreaterCourse, controllerCreaterClasses}
+module.exports = { 
+    controllerCreaterRegister,
+    controllerCreaterEmployee,
+    controllerCreaterCourse,
+    controllerCreaterClasses
+}

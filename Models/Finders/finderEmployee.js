@@ -33,8 +33,8 @@ async function finderEmployeeName(element){
             rigth:true,
             where: {
                 nome: {
-                     [Op.like]: `%${element}%` 
-                    }
+                    [Op.like]: `%${element}%` 
+                }
             },
             attributes: ["nome", "numero_documento", "data_nascimento","telefone", "status", "UF"]
         }]
@@ -49,8 +49,8 @@ async function finderEmployeeDocument(element){
             rigth:true,
             where: {
                 numero_documento: {
-                     [Op.like]: `%${element}%` 
-                    }
+                    [Op.like]: `%${element}%` 
+                }
             },
             attributes: ["nome", "numero_documento", "data_nascimento","telefone", "status", "UF"]
         }]
@@ -62,7 +62,7 @@ async function finderEmployeeOffice(element){
         where : {
             cargo: {
                 [Op.like]: `%${element}%` 
-               }
+            }
         },
         include: [{
             model:  Register,
@@ -77,7 +77,7 @@ async function finderEmployeeDepth(element){
         where : {
             departamento:  {
                 [Op.like]: `%${element}%` 
-               }
+            }
         },
         include: [{
             model:  Register,

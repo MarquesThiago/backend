@@ -1,17 +1,16 @@
 const { findRegisterId, findRegisterName, findRegisterDocument } = require("../Models/Finders/findsRegister")
-const { findCourseId, findCourseName, findCourseMaterial, findCourseHours} = require("../Models/Finders/findsCourse")
+const { findCourseId, findCourseName, findCourseMaterial, findCourseHours } = require("../Models/Finders/findsCourse")
 const { 
     finderEmployeeDepth,
     finderEmployeeDocument,
     finderEmployeeName,
     finderEmployeeId,
     finderEmployeeOffice  
- } = require("../Models/Finders/finderEmployee")
- const {finderClassCourse, finderClassDate, finderClassRoom} = require("./../Models/Finders/findersClass")
- 
+} = require("../Models/Finders/finderEmployee")
+const { finderClassCourse, finderClassDate, finderClassRoom } = require("./../Models/Finders/findersClass")
 
-async function controllerFinderRegister(req, _res){
 
+async function controllerFinderRegister(req, _res) {
     const typeFind = req.body.controller
 
     switch(typeFind){
@@ -22,12 +21,12 @@ async function controllerFinderRegister(req, _res){
         case "document":
             return findRegisterDocument(req)
         default:
-            return {status: 404, message: "Sorry!, Not Found Elements, Verify Your Requisition And Try Again"}
+            return { message: "Sorry!, Not Found Elements, Verify Your Requisition And Try Again" }
     }
 }
 
 
-async function controllerFinderCourse(req) {
+async function controllerFinderCourse(req, _res) {
     const typeFind = req.body.controller
 
     switch(typeFind){
@@ -38,9 +37,9 @@ async function controllerFinderCourse(req) {
         case "material":
             return findCourseMaterial(req)
         case "hours":
-                return findCourseHours(req)
+            return findCourseHours(req)
         default:
-            return {status: 404, message: "Sorry!, Not Found Elements, Verify Your Requisition And Try Again"}
+            return { message: "Sorry!, Not Found Elements, Verify Your Requisition And Try Again" }
     }
 }
 
@@ -54,9 +53,9 @@ async function controllerFinderEmployee(req, res){
         case "document":
             return finderEmployeeDocument(req.body.numDocument)
         case "depth":
-                return finderEmployeeDepth(req.body.depth)
+            return finderEmployeeDepth(req.body.depth)
         case "office":
-                    return finderEmployeeOffice(req.body.office)
+            return finderEmployeeOffice(req.body.office)
         default:
             res.status(404).send({"message": "Sorry!, Not Found Elements, Verify Your Requisition And Try Again"})
     }
