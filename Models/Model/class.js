@@ -1,6 +1,7 @@
 const  Sequelize =  require("sequelize")
-const curse = require('./train')
+const Course = require('./course')
 const db = require("../connetion")
+
 
 const team = db.define("turma",{
     id_turma: {
@@ -18,14 +19,16 @@ const team = db.define("turma",{
         allowNull: false,
       },
     id_curso: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         references: {
-            model: 'train',
+            model: 'cursos',
             key: 'id_curso',
         }
     },
 })
 
-team.belongTo(curse)
+
+team.belongsTo(Course)
+
 
 module.exports = team

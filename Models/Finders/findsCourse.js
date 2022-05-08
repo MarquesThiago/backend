@@ -1,4 +1,4 @@
-const curse = require("../Model/train")
+const curse = require("../Model/course")
 const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 

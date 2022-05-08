@@ -1,7 +1,7 @@
 const Tutor = require("./../Model/tutor")
 
 
-async function CreateTutor(element){
+async function createTutor(element){
     return Tutor.create({
         id_funcionario: element.idEmployee,
         id_turma: element.idTeam, 
@@ -9,4 +9,4 @@ async function CreateTutor(element){
     })
 }
 
-module.exports = {CreateTutor}
+module.exports = {createTutor}

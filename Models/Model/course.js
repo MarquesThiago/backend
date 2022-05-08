@@ -1,6 +1,7 @@
 const  Sequelize =  require("sequelize")
 const db = require("../connetion")
 
+
 module.exports = db.define("curso", {
   id_curso: {
     type: Sequelize.INTEGER.UNSIGNED,

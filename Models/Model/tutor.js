@@ -7,14 +7,14 @@ const tutor = db.define('tutorar', {
     id_funcionario: {
         type: Sequelize.INTEGER,
         references: {
-            model: 'employee',
+            model: 'funcioanrios',
             key: 'id_funcionario',
         }
     },
     id_turma: {
         type: Sequelize.INTEGER,
         references: {
-            model: 'team',
+            model: 'turmas',
             key: 'id_turma',
         }
     },
@@ -24,7 +24,7 @@ const tutor = db.define('tutorar', {
     }
 })
 
-tutor.belongTo(employee)
-tutor.belongTo(team)
+tutor.belongsTo(employee)
+tutor.belongsTo(team)
 
 module.exports = tutor

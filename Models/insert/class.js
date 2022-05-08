@@ -1,6 +1,6 @@
 const Team = require("./../Model/class")
 
-async function createClass(element){
+async function createClasses(element){
     return Team.create({
         sala: element.room,
         created_at: element.dateStart,
@@ -8,4 +8,4 @@ async function createClass(element){
     })
 }
 
-module.exports = {createClass}
+module.exports = {createClasses}

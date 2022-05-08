@@ -7,20 +7,19 @@ const attends = db.define('cursar', {
     id_turma: {
         type: Sequelize.INTEGER,
         references: {
-            model: 'team',
+            model: 'turmas',
             key: 'id_turma',
         }
     },
     id_cadastro: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         references: {
-            model: 'register',
+            model: 'cadastros',
             key: 'id_cadastro',
         }
     },
 })
 
-attends.belongsToMany(team)
-attends.belongsToMany(register)
-
+attends.belongsTo(team)
+attends.belongsTo(register)
 module.exports = attends

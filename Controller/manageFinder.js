@@ -1,5 +1,14 @@
 const { findRegisterId, findRegisterName, findRegisterDocument } = require("../Models/Finders/findsRegister")
-const { findTrainId, findTrainName, findTrainMaterial } = require("../Models/Finders/findsTrain")
+const { findTrainId, findTrainName, findTrainMaterial } = require("../Models/Finders/findsCourse")
+const { 
+    finderEmployeeDepth,
+    finderEmployeeDocument,
+    finderEmployeeName,
+    finderEmployeeId,
+    finderEmployeeOffice  
+ } = require("../Models/Finders/finderEmployee")
+ 
+const {finderTutor} = require("./../Models/Finders/findesTutor")
 
 
 async function controllerFinderRegister(req, _res){
@@ -19,7 +28,7 @@ async function controllerFinderRegister(req, _res){
 }
 
 
-function controllerFinderTrain(req) {
+async function controllerFinderTrain(req) {
     const typeFind = req.body.controller
 
     switch(typeFind){
@@ -34,4 +43,22 @@ function controllerFinderTrain(req) {
     }
 }
 
-module.exports = { controllerFinderRegister, controllerFinderTrain }
+async function controllerFinderEmployee(req, res){
+
+    switch(req.body.controller){
+        case "id":
+            return finderEmployeeId(req.body.id)
+        case "name":
+            return finderEmployeeName(req.body.name)
+        case "document":
+            return finderEmployeeDocument(req.body.numDocument)
+        case "depth":
+                return finderEmployeeDepth(req.body.depth)
+        case "office":
+                    return finderEmployeeOffice(req.body.office)
+        default:
+            res.status(404).send({"message": "Sorry!, Not Found Elements, Verify Your Requisition And Try Again"})
+    }
+}
+
+module.exports = { controllerFinderRegister, controllerFinderTrain, controllerFinderEmployee }

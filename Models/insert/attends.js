@@ -1,9 +1,9 @@
 const Attends = require("./../Model/attend")
 
-async function createAttends(req){
+async function createAttends(element){
     return Attends.create({
-        id_turma: req.idTeam,
-        id_cadastro: req.idRegister
+        id_turma: element.idTeam,
+        id_cadastro: element.idRegister
     })
 }
 

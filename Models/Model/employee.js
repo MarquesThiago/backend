@@ -2,7 +2,7 @@ const  Sequelize =  require("sequelize")
 const register = require('./register')
 const db = require("../connetion")
 
-const employee =  db.define( "funcioanrio", {
+const employee =  db.define( "funcionario", {
     id_funcionario: {
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
@@ -22,15 +22,15 @@ const employee =  db.define( "funcioanrio", {
         allowNull: false,
       },
     id_cadastro: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         references: {
-            model: 'register',
+            model: 'cadastros',
             key: 'id_cadastro',
         }
       },
 
 })
 
-employee.hasOne(register)
+employee.belongsTo(register, {foreignKey: "id_cadastro"})
 
 module.exports =  employee
