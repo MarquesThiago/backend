@@ -28,7 +28,7 @@ const team = db.define("turma",{
 })
 
 
-team.belongsTo(Course)
+team.belongsTo(Course, {foreignKey: "id_curso"})
 
 
 module.exports = team

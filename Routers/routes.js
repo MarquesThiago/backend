@@ -1,5 +1,11 @@
 const express = require('express')
-const { controllerFinderRegister, controllerFinderTrain, controllerFinderEmployee } = require("./../Controller/manageFinder")
+const { 
+    controllerFinderRegister, 
+    controllerFinderCourse, 
+    controllerFinderEmployee,
+    controllerFinderClasses
+} = require("./../Controller/manageFinder")
+
 const { 
     controllerCreaterRegister, 
     controllerCreaterEmployee, 
@@ -21,8 +27,8 @@ routes.post("/find-cad", async (req , res) => {
     res.status(200).send(register)
 })
 
-routes.post("/find-course", (req , res) => {
-    const register = controllerFinderTrain(req)
+routes.post("/find-course", async (req , res) => {
+    const register = await controllerFinderCourse(req)
     res.status(200).send(register)
 })
 
@@ -50,6 +56,12 @@ routes.post("/find-employee", async (req, res) => {
     const register = await controllerFinderEmployee(req, res)
     res.status(200).send(register)
 })
+
+routes.post("/find-classes", async (req, res) => {
+    const register = await controllerFinderClasses(req, res)
+    res.status(200).send(register)
+})
+
 
 routes.get("/all", async (req, res) => {
 const registers = await allRegister(req, res);

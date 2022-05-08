@@ -1,29 +1,38 @@
-const curse = require("../Model/course")
+const course = require("../Model/course")
 const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 
-function findTrainName(req) {
-    return  curse.findAll({
+async function findCourseName(req) {
+    return  course.findAll({
         where: {
             nome: {
-                [Op.Like]: `%${req.body.name}%`
+                [Op.like]: `%${req.body.name}%`
             }
         }
     }).catch(() => {return {}})
 }
 
-async function  findTrainId(req) {
-    return curse.findByPk(req.body.id)
+async function  findCourseId(req) {
+    return course.findByPk(req.body.id)
 }
 
-async function  findTrainMaterial(req) {
-    return curse.findAll({
+async function  findCourseMaterial(req) {
+    return course.findAll({
         where: {
             material_alvo: {
-                [Op.Like] : `%${req.body.materia}%`
+                [Op.like] : `%${req.body.materia}%`
             }
         }
     }).catch(() => { return {}})
 }
 
-module.exports =  { findTrainName, findTrainId, findTrainMaterial }
+async function  findCourseHours(req) {
+    return course.findAll({
+        where: {
+           carga_horaria: req.body.hours
+        }
+    }).catch(() => { return {}})
+}
+
+
+module.exports =  { findCourseName, findCourseId, findCourseMaterial, findCourseHours}

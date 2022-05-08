@@ -1,5 +1,5 @@
 const { findRegisterId, findRegisterName, findRegisterDocument } = require("../Models/Finders/findsRegister")
-const { findTrainId, findTrainName, findTrainMaterial } = require("../Models/Finders/findsCourse")
+const { findCourseId, findCourseName, findCourseMaterial, findCourseHours} = require("../Models/Finders/findsCourse")
 const { 
     finderEmployeeDepth,
     finderEmployeeDocument,
@@ -7,9 +7,8 @@ const {
     finderEmployeeId,
     finderEmployeeOffice  
  } = require("../Models/Finders/finderEmployee")
+ const {finderClassCourse, finderClassDate, finderClassRoom} = require("./../Models/Finders/findersClass")
  
-const {finderTutor} = require("./../Models/Finders/findesTutor")
-
 
 async function controllerFinderRegister(req, _res){
 
@@ -28,16 +27,18 @@ async function controllerFinderRegister(req, _res){
 }
 
 
-async function controllerFinderTrain(req) {
+async function controllerFinderCourse(req) {
     const typeFind = req.body.controller
 
     switch(typeFind){
         case "id":
-            return findTrainId(req)
+            return findCourseId(req)
         case "name":
-            return findTrainName(req)
+            return findCourseName(req)
         case "material":
-            return findTrainMaterial(req)
+            return findCourseMaterial(req)
+        case "hours":
+                return findCourseHours(req)
         default:
             return {status: 404, message: "Sorry!, Not Found Elements, Verify Your Requisition And Try Again"}
     }
@@ -61,4 +62,26 @@ async function controllerFinderEmployee(req, res){
     }
 }
 
-module.exports = { controllerFinderRegister, controllerFinderTrain, controllerFinderEmployee }
+
+async function controllerFinderClasses(req, res){
+
+    const typeFind = req.body.controller
+
+    switch(typeFind){
+        case "course":
+            return finderClassCourse(req.body.nameCourse)
+        case "room":
+            return finderClassRoom(req.body.room)
+        case "date":
+            return finderClassDate(req.body.dateStart)
+        default:
+            res.status(404).send({"message" : "Sorry!, Not Found Elements, Verify Your Requisition And Try Again"})
+    }
+}
+
+module.exports = { 
+    controllerFinderRegister, 
+    controllerFinderCourse, 
+    controllerFinderEmployee, 
+    controllerFinderClasses 
+}

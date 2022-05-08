@@ -4,7 +4,8 @@ async function createClasses(element){
     return Team.create({
         sala: element.room,
         created_at: element.dateStart,
-        id_curso:  element.idCurse
+        id_curso:  element.idCourse,
+        cursoIdCurso: element.idCourse
     })
 }
 
