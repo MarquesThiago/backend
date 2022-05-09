@@ -4,6 +4,7 @@ const {createTutor} = require("./../Models/insert/tutor")
 const{createCourse} = require("./../Models/insert/course")
 const {createClasses} = require("./../Models/insert/class")
 const {createAttends} = require("./../Models/insert/attends")
+const {updateAttends, updateEmployee} = require("./../Models/update/rulerRegister")
 
 
 async function controllerCreaterRegister(req, _res){
@@ -11,7 +12,16 @@ async function controllerCreaterRegister(req, _res){
     let register = await createRegister(req)
     register["dataValues"]["AddedClasses"]  = []
 
-    for( let index = 0; index < req.body.listClasses.length; index++){
+    let lenList =  req.body.listClasses.length
+
+    if(lenList >= 1){
+       let status =  await updateAttends( await register.id_cadastro)
+       if (status != false){
+           register.status = status
+       }
+    }
+
+    for( let index = 0; index < lenList; index++){
         let team =  req.body.listClasses[index]
         team["idRegister"] = register.id_cadastro
 
@@ -28,6 +38,13 @@ async function controllerCreaterEmployee(req){
     let employee = await createEmployee(req.body)
     
     employee["dataValues"]["listClassesCreated"] = [ ]
+
+    let lenList =  req.body.listClasses.length
+
+    if(lenList >= 1){
+       let status = await updateEmployee( req.body.idRegister)
+
+    }
 
     for( let index = 0; index < req.body.listClasses.length; index++ ){
             let tutor =  req.body.listClasses[index]
