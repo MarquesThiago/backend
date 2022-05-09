@@ -5,7 +5,7 @@ const Op = Sequelize.Op
 
 
 
-async function finderClass(element){
+async function finderClass(_element){
 
     return Room.findAll({
         include: [{

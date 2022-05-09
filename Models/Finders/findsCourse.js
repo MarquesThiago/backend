@@ -29,7 +29,7 @@ async function  findCourseMaterial(req) {
 async function  findCourseHours(req) {
     return course.findAll({
         where: {
-           carga_horaria: req.body.hours
+            carga_horaria: req.body.hours
         }
     }).catch(() => { return {}})
 }

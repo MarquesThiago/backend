@@ -18,22 +18,32 @@ const { allRegister, finderEmployeeAll } = require("./../Controller/dev_all")
 
 const routes =  express.Router()
 
-routes.get("/", (req , res) => {
+routes.get("/", (_req , res) => {
     return res.status(200).send({})
 })
 
 routes.post("/find-cad", async (req , res) => {
-    const register = await controllerFinderRegister(req)
+    const register = await controllerFinderRegister(req, res)
+
+    if (!req.body.controller) {
+        res.status(404).send(register)
+    }
+
     res.status(200).send(register)
 })
 
 routes.post("/find-course", async (req , res) => {
-    const register = await controllerFinderCourse(req)
+    const register = await controllerFinderCourse(req, res)
     res.status(200).send(register)
 })
 
 routes.post("/create-register", async (req, res) => {
     const register = await controllerCreaterRegister(req)
+
+    if (!req.body.controller) {
+        res.status(404).send(register)
+    }
+
     res.status(200).send(register)
 })
 

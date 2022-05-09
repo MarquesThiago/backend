@@ -2,10 +2,9 @@ const Register = require("../Models/Model/register")
 const Employee = require("./../Models/Model/employee")
 
 const allRegister = async  (_req, _res) => {
-     const register = await Register.findAll().catch(
-         () => {return {}}
-     )
-     return register
+    return Register.findAll().catch(
+        () => {return {}}
+    )
 }
 
 
@@ -17,6 +16,5 @@ async function finderEmployeeAll(){
             attributes: ["nome", "numero_documento", "data_nascimento","telefone", "status", "UF"]
         }]
 })}
-
 
 module.exports = { allRegister, finderEmployeeAll }
